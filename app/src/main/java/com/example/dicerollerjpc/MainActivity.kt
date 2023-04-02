@@ -56,7 +56,9 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        //By adding remember to variable meanse make the variable mutable
         var id by remember { mutableStateOf(1)}
+        //Result for image resource
         var res = when(id){
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
@@ -65,11 +67,14 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
             5 -> R.drawable.dice_5
             else -> R.drawable.dice_6
         }
+        //Dice image
         Image(
             painter = painterResource(res), 
             contentDescription = id.toString()
         )
+        //Add space using spacer
         Spacer(modifier = Modifier.height(16.dp))
+        //Clickable button to roll the dice
         Button(onClick = {
             id = (1..6).random()
         }) {
